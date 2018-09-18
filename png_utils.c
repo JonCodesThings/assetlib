@@ -86,7 +86,7 @@ bool load_png(const char* filepath, struct image* image)
     unsigned int row_size = png_get_rowbytes(png_struct, png_info);
 
     //allocates memory for the image data
-    image->data = (unsigned char*)malloc(row_size * sizeof(unsigned char) * image->height);
+    image->data = malloc(row_size * sizeof(unsigned char) * image->height);
 
     //list of row pointers for libpng
     unsigned char** row_pointers = malloc(image->height * sizeof(unsigned char*));

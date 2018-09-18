@@ -13,7 +13,7 @@ void clear_image(struct image* image)
 
 struct image* create_image(unsigned int width, unsigned int height, enum color_format format, unsigned char* data)
 {
-    struct image* image_ = (struct image*)malloc(sizeof(struct image));
+    struct image* image_ = malloc(sizeof(struct image));
 
     if (!image_)
         return NULL;
@@ -28,7 +28,7 @@ struct image* create_image(unsigned int width, unsigned int height, enum color_f
 
 struct image* create_blank_image()
 {
-    struct image* image_ = (struct image*)malloc(sizeof(struct image));
+    struct image* image_ = malloc(sizeof(struct image));
     if (!image_)
         return NULL;
 

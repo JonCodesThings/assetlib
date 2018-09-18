@@ -17,4 +17,4 @@ author: Jonathan Duncanson
 */
 bool load_png(const char* filepath, struct image* image);
 
-#endif // ASSETLIB_PNG_UTILS_H
+#endif
