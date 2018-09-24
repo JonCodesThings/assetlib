@@ -111,7 +111,7 @@ bool load_obj(const char* filepath, struct model* model)
                 }
                 break;
             case 'f':
-                if (!comment_toggle)
+				if (!comment_toggle && whole_file[i - 1] == '\n')
                 {
                     sscanf(whole_file + i + 1, "%d/%d/%d %d/%d/%d %d/%d/%d\n", &faces[face_index], &faces[face_index + 1], &faces[face_index + 2], &faces[face_index + 3],
                             &faces[face_index + 4], &faces[face_index + 5], &faces[face_index + 6], &faces[face_index + 7], &faces[face_index + 8]);
@@ -125,7 +125,6 @@ bool load_obj(const char* filepath, struct model* model)
                 break;
         }
     }
-
     //allocates memory to store the final sets of data for the model
     model->normals = malloc(sizeof(float) * 3 * 3 * model_info.faces);
     if (!model->normals)
@@ -142,6 +141,7 @@ bool load_obj(const char* filepath, struct model* model)
     unsigned int normal_index = 0;
     unsigned int tex_coord_index = 0;
     unsigned int vertices_index = 0;
+
 
     //organises and puts the sorted data into the appropriate arrays
     for (unsigned int i = 0; i < model_info.faces * 9; i+=3)
@@ -161,7 +161,6 @@ bool load_obj(const char* filepath, struct model* model)
         tex_coord_index += 2;
         normal_index += 3;
     }
-
     //sets the model data
     model->normal_count = model_info.faces * 3;
     model->tex_coord_count = model_info.faces * 3;

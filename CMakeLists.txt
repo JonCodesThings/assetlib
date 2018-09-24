@@ -5,7 +5,7 @@ set(CMAKE_C_STANDARD 11)
 
 find_package(PNG)
 if(PNG_FOUND)
-	include_directories(PNG_INCLUDE_DIRS)
+	include_directories(${PNG_INCLUDE_DIRS})
 endif()
 
 include_directories(.)
