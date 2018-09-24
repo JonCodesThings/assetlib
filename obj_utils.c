@@ -64,19 +64,19 @@ bool load_obj(const char* filepath, struct model* model)
 
     float* unsorted_normals = malloc(sizeof(float) * model_info.normals * 3);
     if (!unsorted_normals)
-        return NULL;
+        return false;
 
     float* unsorted_tex_coords = malloc(sizeof(float) * model_info.tex_coords * 2);
     if (!unsorted_tex_coords)
-        return NULL;
+        return false;
 
     float* unsorted_vertices = malloc(sizeof(float) * model_info.vertices * 3);
     if (!unsorted_vertices)
-        return NULL;
+        return false;
 
     int* faces = malloc(sizeof(int) * model_info.faces * 9);
     if (!faces)
-        return NULL;
+        return false;
 
     unsigned int unsorted_normal_index = 0;
     unsigned int unsorted_tex_coord_index = 0;
