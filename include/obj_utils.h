@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-#include <model.h>
+#include <include/model.h>
 
 /*!
 Struct to store data about obj models.

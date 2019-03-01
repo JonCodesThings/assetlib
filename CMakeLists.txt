@@ -11,13 +11,13 @@ endif()
 include_directories(.)
 
 set(SOURCE_FILES
-	image.c
-	image.h
-	model.h
-	obj_utils.c
-	obj_utils.h
-	png_utils.c
-	png_utils.h)
+	src/image.c
+	src/obj_utils.c
+	src/png_utils.c
+	include/image.h
+	include/model.h
+	include/obj_utils.h
+	include/png_utils.h)
 
 add_library(assetlib STATIC ${SOURCE_FILES})
 set_target_properties(assetlib PROPERTIES PREFIX "")

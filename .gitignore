@@ -1,2 +1,14 @@
 external/
 assetlib/
+assetlib.dir/
+CMakeFiles/
+Win32/
+Debug/
+Release/
+
+*.vcxproj
+*.filters
+*.sln
+
+CMakeCache.txt
+cmake_install.cmake
