@@ -5,7 +5,9 @@
 
 void clear_image(struct image* image)
 {
-    free(image->data);
+	if (image->data != NULL)
+		free(image->data);
+
     image->width = 0;
     image->height = 0;
     image->format = NONE;

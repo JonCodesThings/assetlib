@@ -14,10 +14,13 @@ set(SOURCE_FILES
 	src/image.c
 	src/obj_utils.c
 	src/png_utils.c
+	src/wav_utils.c
+	include/audio.h
 	include/image.h
 	include/model.h
 	include/obj_utils.h
-	include/png_utils.h)
+	include/png_utils.h
+	include/wav_utils.h)
 
 add_library(assetlib STATIC ${SOURCE_FILES})
 set_target_properties(assetlib PROPERTIES PREFIX "")
