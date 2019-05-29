@@ -21,6 +21,6 @@ struct obj_info
 Function that loads an obj into an model struct. Returns true if successful.
 author: Jonathan Duncanson
 */
-bool load_obj(const char* filepath, struct model* model);
+bool load_obj(const char* filepath, struct model_data* model);
 
 #endif

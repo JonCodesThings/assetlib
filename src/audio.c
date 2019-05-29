@@ -20,7 +20,7 @@ void clear_audio_data(struct audio_data* data)
 
 struct audio_data* create_audio_data(unsigned int channels, long sample_rate, long byte_rate, int block_align, int bits_per_sample, unsigned char* data)
 {
-	struct audio_data* audio_data_ = malloc(sizeof(struct audio_data));
+	struct audio_data* audio_data_ = create_blank_audio_data();
 
 	if (!audio_data_)
 		return NULL;

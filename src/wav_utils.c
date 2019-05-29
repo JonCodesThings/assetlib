@@ -41,15 +41,14 @@ int getRIFFChunkSize(unsigned char* const file_buffer, const unsigned int offset
 
 bool is_wav(const char* filepath)
 {
-	FILE* file = NULL;
-	fopen_s(&file, filepath, "rb");
+	FILE* file = fopen(filepath, "rb");
 
 	if (file == NULL)
 		return false;
 
 	unsigned char* file_buffer = (unsigned char*)malloc(sizeof(struct RIFF_HEADER) + 4);
 
-	fread_s(file_buffer, sizeof(struct RIFF_HEADER) + 4, 1, sizeof(struct RIFF_HEADER) + 4, file);
+	fread(file_buffer, sizeof(struct RIFF_HEADER) + 4, 1, file);
 
 	fclose(file);
 
@@ -71,8 +70,7 @@ bool is_wav(const char* filepath)
 
 bool load_wav(const char* filepath, struct audio_data* data)
 {
-	FILE* file = NULL;
-	fopen_s(&file, filepath, "rb");
+	FILE* file = fopen(filepath, "rb");
 
 	if (file == NULL)
 		return false;
@@ -91,7 +89,7 @@ bool load_wav(const char* filepath, struct audio_data* data)
 	if (file_buffer == NULL)
 		return false;
 
-	fread_s(file_buffer, size, 1, size, file);
+	fread(file_buffer, size, 1, file);
 
 	fclose(file);
 

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-bool load_obj(const char* filepath, struct model* model)
+bool load_obj(const char* filepath, struct model_data* model)
 {
     //opens the file in read mode
     FILE* file = fopen(filepath, "r");
