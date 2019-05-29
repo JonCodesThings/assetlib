@@ -5,9 +5,11 @@
 
 void clear_image(struct image* image)
 {
+	//free data as required
 	if (image->data != NULL)
 		free(image->data);
 
+	//set properties to default
     image->width = 0;
     image->height = 0;
     image->format = NONE;
@@ -15,11 +17,13 @@ void clear_image(struct image* image)
 
 struct image* create_image(unsigned int width, unsigned int height, enum color_format format, unsigned char* data)
 {
+	//create a new blank image
 	struct image* image_ = create_blank_image();
 
     if (!image_)
         return NULL;
 
+	//set properties based on parameters
     image_->width = width;
     image_->height = height;
     image_->format = format;
@@ -30,20 +34,24 @@ struct image* create_image(unsigned int width, unsigned int height, enum color_f
 
 struct image* create_blank_image()
 {
+	//manually allocate the memory
     struct image* image_ = malloc(sizeof(struct image));
+
     if (!image_)
         return NULL;
 
-    image_->width = 0;
-    image_->height = 0;
-    image_->format = NONE;
+	//set data to NULL
     image_->data = NULL;
+
+	//clear any odd data to defaults
+	clear_image(image_);
 
     return image_;
 }
 
 void delete_image(struct image* image)
 {
+	//clear and delete the image data
     clear_image(image);
     free(image);
 }

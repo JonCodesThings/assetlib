@@ -6,16 +6,19 @@
 
 bool is_png(const char* filepath)
 {
+	//opens file
     FILE* file = fopen(filepath, "rb");
 
     if (!file)
         return false;
 
+	//reads the png header
     unsigned char png_header[8];
     fread(png_header, 1, 8, file);
 
     fclose(file);
 
+	//checks if the file is a png
     if (png_sig_cmp(png_header, 0, 8))
         return false;
 

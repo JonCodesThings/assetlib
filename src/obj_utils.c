@@ -37,23 +37,29 @@ bool load_obj(const char* filepath, struct model_data* model)
         {
             default:
                 break;
+			//case vertex
             case 'v':
                 if (!comment_toggle)
                 {
+					//vertex normal
                     if (whole_file[i + 1] == 'n')
                         model_info.normals++;
+					//vertex texture co-ordinate
                     else if (whole_file[i+1] == 't')
                         model_info.tex_coords++;
                     else
                         model_info.vertices++;
                 }
                 break;
+			//case face
             case 'f':
                 if (!comment_toggle)
                     model_info.faces++;
+			//if is a comment
             case '#':
                 comment_toggle = true;
                 break;
+			//if newline
             case '\n':
                 comment_toggle = false;
                 break;
@@ -126,6 +132,7 @@ bool load_obj(const char* filepath, struct model_data* model)
         }
     }
     //allocates memory to store the final sets of data for the model
+
     model->normals = malloc(sizeof(float) * 3 * 3 * model_info.faces);
     if (!model->normals)
         return false;
