@@ -1,4 +1,4 @@
-#include <include/obj_utils.h>
+#include <include/assetlib/obj_utils.h>
 
 #include <stdlib.h>
 #include <stdio.h>

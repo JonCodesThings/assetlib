@@ -1,4 +1,4 @@
-#include <include/png_utils.h>
+#include <include/assetlib/png_utils.h>
 
 #include <stdlib.h>
 #include <stdio.h>

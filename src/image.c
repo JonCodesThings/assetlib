@@ -1,4 +1,4 @@
-#include <include/image.h>
+#include <include/assetlib/image.h>
 
 #include <stddef.h>
 #include <stdlib.h>

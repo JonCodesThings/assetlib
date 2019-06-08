@@ -1,4 +1,4 @@
-#include "include\model.h"
+#include <include/assetlib/model.h>
 
 #include <stddef.h>
 #include <stdlib.h>

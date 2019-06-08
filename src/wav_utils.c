@@ -1,4 +1,4 @@
-#include <include/wav_utils.h>
+#include <include/assetlib/wav_utils.h>
 
 #include <stdlib.h>
 #include <stdio.h>

@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-#include <include/model.h>
+#include <include/assetlib/model.h>
 
 /*!
 Struct to store data about obj models.

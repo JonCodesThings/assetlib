@@ -12,15 +12,16 @@ include_directories(.)
 
 set(SOURCE_FILES
 	src/image.c
+	src/model.c
 	src/obj_utils.c
 	src/png_utils.c
 	src/wav_utils.c
-	include/audio.h
-	include/image.h
-	include/model.h
-	include/obj_utils.h
-	include/png_utils.h
-	include/wav_utils.h)
+	include/assetlib/audio.h
+	include/assetlib/image.h
+	include/assetlib/model.h
+	include/assetlib/obj_utils.h
+	include/assetlib/png_utils.h
+	include/assetlib/wav_utils.h)
 
 add_library(assetlib STATIC ${SOURCE_FILES})
 set_target_properties(assetlib PROPERTIES PREFIX "")

@@ -1,4 +1,4 @@
-#include <include/audio.h>
+#include <include/assetlib/audio.h>
 
 #include <stddef.h>
 #include <stdlib.h>

@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-#include <include/image.h>
+#include <include/assetlib/image.h>
 
 /*!
 Function that determines if a file is a png. Returns true if it is.
