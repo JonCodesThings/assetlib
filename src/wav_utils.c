@@ -75,7 +75,7 @@ bool is_wav(const char* filepath)
     return true;
 }
 
-bool load_wav(const char* filepath, struct audio_data* data)
+bool load_wav(const char* filepath, audio_data* data)
 {
 	//check if the file is wav
 	if (!is_wav(filepath))

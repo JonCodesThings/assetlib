@@ -16,36 +16,36 @@ enum color_format
 Struct to store image data.
 author: Jonathan Duncanson
 */
-struct image
+typedef struct
 {
     unsigned int width, height;
     enum color_format format;
     unsigned char* data;
-};
+} image;
 
 /*!
 Function that clears an image's data.
 author: Jonathan Duncanson
 */
-void clear_image(struct image* image);
+void clear_image(image* image);
 
 
 /*!
 Function that creates a new image from the parameters.
 author: Jonathan Duncanson
 */
-struct image* create_image(unsigned int width, unsigned int height, enum color_format format, unsigned char* data);
+image* create_image(unsigned int width, unsigned int height, enum color_format format, unsigned char* data);
 
 /*!
 Function that creates a new blank image.
 author: Jonathan Duncanson
 */
-struct image* create_blank_image();
+image* create_blank_image();
 
 /*!
 Function that deletes an image and any related data.
 author: Jonathan Duncanson
 */
-void delete_image(struct image* image);
+void delete_image(image* image);
 
 #endif

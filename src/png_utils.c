@@ -25,7 +25,7 @@ bool is_png(const char* filepath)
     return true;
 }
 
-bool load_png(const char* filepath, struct image* image)
+bool load_png(const char* filepath, image* image)
 {
     if (!is_png(filepath))
         return false;

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-bool load_obj(const char* filepath, struct model_data* model)
+bool load_obj(const char* filepath, model_data* model)
 {
     //opens the file in read mode
     FILE* file = fopen(filepath, "r");
@@ -22,7 +22,7 @@ bool load_obj(const char* filepath, struct model_data* model)
     fclose(file);
 
     //creates a struct to store model info
-    struct obj_info model_info;
+    obj_info model_info;
     model_info.faces = 0;
     model_info.normals = 0;
     model_info.tex_coords = 0;

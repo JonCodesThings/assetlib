@@ -3,7 +3,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-void clear_model_data(struct model_data* model_data)
+void clear_model_data(model_data* model_data)
 {
 	//free all vertex, texture co-ordinate and normal data as required
 	if (model_data->vertices)
@@ -24,10 +24,10 @@ void clear_model_data(struct model_data* model_data)
 	model_data->normal_count = 0;
 }
 
-struct model_data* create_model_data(float * vertices, float * tex_coords, float * normals, unsigned int vertex_count, unsigned int tex_coord_count, unsigned int normal_count)
+model_data* create_model_data(float * vertices, float * tex_coords, float * normals, unsigned int vertex_count, unsigned int tex_coord_count, unsigned int normal_count)
 {
 	//create blank structure
-	struct model_data* model_ = create_blank_model_data();
+    model_data* model_ = create_blank_model_data();
 
 	if (!model_)
 		return NULL;
@@ -43,10 +43,10 @@ struct model_data* create_model_data(float * vertices, float * tex_coords, float
 	return model_;
 }
 
-struct model_data* create_blank_model_data()
+model_data* create_blank_model_data()
 {
 	//manually allocate the model structure
-	struct model_data* model_ = malloc(sizeof(struct model_data));
+    model_data* model_ = malloc(sizeof(model_data));
 
 	//set pointers to NULL
 	model_->vertices = NULL;
@@ -62,7 +62,7 @@ struct model_data* create_blank_model_data()
 	return model_;
 }
 
-void delete_model_data(struct model_data* model_data)
+void delete_model_data(model_data* model_data)
 {
 	//clear and free the model data
 	clear_model_data(model_data);

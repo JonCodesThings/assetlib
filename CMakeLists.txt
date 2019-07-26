@@ -11,6 +11,7 @@ endif()
 include_directories(.)
 
 set(SOURCE_FILES
+	src/audio.c
 	src/image.c
 	src/model.c
 	src/obj_utils.c

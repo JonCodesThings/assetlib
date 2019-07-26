@@ -15,6 +15,6 @@ bool is_png(const char* filepath);
 Function that loads a png into an image struct. Returns true if successful.
 author: Jonathan Duncanson
 */
-bool load_png(const char* filepath, struct image* image);
+bool load_png(const char* filepath, image* image);
 
 #endif

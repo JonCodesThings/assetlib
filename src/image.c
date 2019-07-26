@@ -3,7 +3,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-void clear_image(struct image* image)
+void clear_image(image* image)
 {
 	//free data as required
 	if (image->data != NULL)
@@ -15,10 +15,10 @@ void clear_image(struct image* image)
     image->format = NONE;
 }
 
-struct image* create_image(unsigned int width, unsigned int height, enum color_format format, unsigned char* data)
+image* create_image(unsigned int width, unsigned int height, enum color_format format, unsigned char* data)
 {
 	//create a new blank image
-	struct image* image_ = create_blank_image();
+    image* image_ = create_blank_image();
 
     if (!image_)
         return NULL;
@@ -32,10 +32,10 @@ struct image* create_image(unsigned int width, unsigned int height, enum color_f
     return image_;
 }
 
-struct image* create_blank_image()
+image* create_blank_image()
 {
 	//manually allocate the memory
-    struct image* image_ = malloc(sizeof(struct image));
+    image* image_ = malloc(sizeof(image));
 
     if (!image_)
         return NULL;
@@ -49,7 +49,7 @@ struct image* create_blank_image()
     return image_;
 }
 
-void delete_image(struct image* image)
+void delete_image(image* image)
 {
 	//clear and delete the image data
     clear_image(image);

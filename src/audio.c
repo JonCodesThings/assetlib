@@ -3,7 +3,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-void clear_audio_data(struct audio_data* data)
+void clear_audio_data(audio_data* data)
 {
 	//set to defaults of 0
 	data->bits_per_sample = 0;
@@ -11,7 +11,7 @@ void clear_audio_data(struct audio_data* data)
 	data->byte_rate = 0;
 	data->channels = 0;
 	data->sample_rate = 0;
-	
+
 	//free any residual memory for the raw data
 	if (data->data != NULL)
 		free(data->data);
@@ -19,10 +19,10 @@ void clear_audio_data(struct audio_data* data)
 	data->data = NULL;
 }
 
-struct audio_data* create_audio_data(unsigned int channels, long sample_rate, long byte_rate, int block_align, int bits_per_sample, unsigned char* data)
+audio_data* create_audio_data(unsigned int channels, long sample_rate, long byte_rate, int block_align, int bits_per_sample, unsigned char* data)
 {
 	//create a blank audio data structure
-	struct audio_data* audio_data_ = create_blank_audio_data();
+    audio_data* audio_data_ = create_blank_audio_data();
 
 	if (!audio_data_)
 		return NULL;
@@ -38,10 +38,10 @@ struct audio_data* create_audio_data(unsigned int channels, long sample_rate, lo
 	return audio_data_;
 }
 
-struct audio_data* create_blank_audio_data()
+audio_data* create_blank_audio_data()
 {
 	//malloc the memory and create the structure
-	struct audio_data* audio_data_ = malloc(sizeof(struct audio_data));
+    audio_data* audio_data_ = malloc(sizeof(audio_data));
 
 	if (!audio_data_)
 		return NULL;
@@ -55,7 +55,7 @@ struct audio_data* create_blank_audio_data()
 	return audio_data_;
 }
 
-void delete_audio_data(struct audio_data* audio_data)
+void delete_audio_data(audio_data* audio_data)
 {
 	//clear and delete the structure
 	clear_audio_data(audio_data);
