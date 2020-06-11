@@ -5,22 +5,20 @@
 
 #include <include/assetlib/model.h>
 
-/*!
-Struct to store data about obj models.
-author: Jonathan Duncanson
-*/
+//TODO: @Jon
+//Move this into the source file because it isn't used anywhere else.
+//NOTE: @Jon
+//Struct to store data about OBJ models.
 typedef struct
 {
     unsigned int vertices;
     unsigned int normals;
-    unsigned int tex_coords;
+    unsigned int texCoords;
     unsigned int faces;
-} obj_info;
+} OBJInfo;
 
-/*!
-Function that loads an obj into an model struct. Returns true if successful.
-author: Jonathan Duncanson
-*/
-bool load_obj(const char* filepath, model_data* model);
+//NOTE: @Jon
+//Function that loads an obj into an model struct. Returns true if successful.
+bool LoadOBJModel(const char *filepath, Model *model);
 
 #endif

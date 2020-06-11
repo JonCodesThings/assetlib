@@ -35,11 +35,11 @@ struct WAV_DATA_CHUNK
 	unsigned char* data;
 };
 
-bool isRIFFChunkID(unsigned char* const file_buffer, const unsigned int offset, const char* id);
+bool IsRIFFChunkID(unsigned char* const file_buffer, const unsigned int offset, const char* id);
 
-int getRIFFChunkSize(unsigned char* const file_buffer, const unsigned int offset);
+int GetRIFFChunkSize(unsigned char* const file_buffer, const unsigned int offset);
 
-bool is_wav(const char* filepath)
+bool IsWAV(const char *filepath)
 {
 	//open the file
 	FILE* file = fopen(filepath, "rb");
@@ -75,10 +75,10 @@ bool is_wav(const char* filepath)
     return true;
 }
 
-bool load_wav(const char* filepath, audio_data* data)
+bool LoadWAV(const char* filepath, AudioBuffer *data)
 {
 	//check if the file is wav
-	if (!is_wav(filepath))
+	if (!IsWAV(filepath))
 		return false;
 
 	//open the file
@@ -118,7 +118,7 @@ bool load_wav(const char* filepath, audio_data* data)
 	do
 	{
 		//if the chunk is the RIFF header for the file
-		if (isRIFFChunkID(file_buffer, pointer_tracker, "RIFF"))
+		if (IsRIFFChunkID(file_buffer, pointer_tracker, "RIFF"))
 		{
 			memcpy(&header, file_buffer + pointer_tracker, sizeof(struct RIFF_HEADER));
 			char format[4];
@@ -132,17 +132,17 @@ bool load_wav(const char* filepath, audio_data* data)
 		}
 
 		//if the chunk is the format information for the WAV file
-		else if (isRIFFChunkID(file_buffer, pointer_tracker, "fmt "))
+		else if (IsRIFFChunkID(file_buffer, pointer_tracker, "fmt "))
 		{
 			memcpy(&fmt, file_buffer + pointer_tracker, sizeof(struct WAV_FMT_CHUNK));
 			pointer_tracker += sizeof(struct WAV_FMT_CHUNK);
 		}
 
 		//if the chunk contains the raw data
-		else if (isRIFFChunkID(file_buffer, pointer_tracker, "data"))
+		else if (IsRIFFChunkID(file_buffer, pointer_tracker, "data"))
 		{
 			memcpy(&raw_data, file_buffer + pointer_tracker, (sizeof(unsigned char) * 4) + sizeof(long));
-			int chunk_size = getRIFFChunkSize(file_buffer, pointer_tracker);
+			int chunk_size = GetRIFFChunkSize(file_buffer, pointer_tracker);
 			raw_data.data = (unsigned char*)malloc(chunk_size);
 			memcpy(raw_data.data, file_buffer + pointer_tracker + (sizeof(unsigned char) * 4) + sizeof(long), chunk_size);
 			pointer_tracker += sizeof(struct RIFF_HEADER) + 4 + chunk_size;
@@ -151,7 +151,7 @@ bool load_wav(const char* filepath, audio_data* data)
 		//else ignore the chunk but move the tracker
 		else
 		{
-			pointer_tracker += sizeof(struct RIFF_HEADER) + getRIFFChunkSize(file_buffer, pointer_tracker);
+			pointer_tracker += sizeof(struct RIFF_HEADER) + GetRIFFChunkSize(file_buffer, pointer_tracker);
 		}
 	} while (pointer_tracker < size - (sizeof(struct RIFF_HEADER) + sizeof(struct WAV_FMT_CHUNK)));
 
@@ -159,18 +159,18 @@ bool load_wav(const char* filepath, audio_data* data)
 	free(file_buffer);
 
 	//sets all the data for the audio
-	data->bits_per_sample = fmt.bits_per_sample;
-	data->block_align = fmt.block_align;
-	data->byte_rate = fmt.byte_rate;
+	data->bitsPerSample = fmt.bits_per_sample;
+	data->blockAlign = fmt.block_align;
+	data->byteRate = fmt.byte_rate;
 	data->channels = fmt.channels;
 	data->data = raw_data.data;
-	data->sample_rate = fmt.sample_rate;
+	data->sampleRate = fmt.sample_rate;
 
     return true;
 }
 
 //check the id of the RIFF chunk
-bool isRIFFChunkID(unsigned char* const file_buffer, const unsigned int offset, const char* id)
+bool IsRIFFChunkID(unsigned char* const file_buffer, const unsigned int offset, const char* id)
 {
 	char riff_id[4];
 	memcpy(riff_id, file_buffer + offset, 4);
@@ -180,7 +180,7 @@ bool isRIFFChunkID(unsigned char* const file_buffer, const unsigned int offset, 
 }
 
 //get the size of the given riff chunk
-int getRIFFChunkSize(unsigned char* const file_buffer, const unsigned int offset)
+int GetRIFFChunkSize(unsigned char* const file_buffer, const unsigned int offset)
 {
 	struct RIFF_CHUNK_INFO info;
 	memcpy(&info, file_buffer + offset, sizeof(struct RIFF_CHUNK_INFO));

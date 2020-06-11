@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-bool load_obj(const char* filepath, model_data* model)
+bool LoadOBJ(const char* filepath, Model *model)
 {
     //opens the file in read mode
     FILE* file = fopen(filepath, "r");
@@ -22,10 +22,10 @@ bool load_obj(const char* filepath, model_data* model)
     fclose(file);
 
     //creates a struct to store model info
-    obj_info model_info;
+    OBJInfo model_info;
     model_info.faces = 0;
     model_info.normals = 0;
-    model_info.tex_coords = 0;
+    model_info.texCoords = 0;
     model_info.vertices = 0;
 
     bool comment_toggle = false;
@@ -46,7 +46,7 @@ bool load_obj(const char* filepath, model_data* model)
                         model_info.normals++;
 					//vertex texture co-ordinate
                     else if (whole_file[i+1] == 't')
-                        model_info.tex_coords++;
+                        model_info.texCoords++;
                     else
                         model_info.vertices++;
                 }
@@ -72,7 +72,7 @@ bool load_obj(const char* filepath, model_data* model)
     if (!unsorted_normals)
         return false;
 
-    float* unsorted_tex_coords = malloc(sizeof(float) * model_info.tex_coords * 2);
+    float* unsorted_tex_coords = malloc(sizeof(float) * model_info.texCoords * 2);
     if (!unsorted_tex_coords)
         return false;
 
@@ -137,8 +137,8 @@ bool load_obj(const char* filepath, model_data* model)
     if (!model->normals)
         return false;
 
-    model->tex_coords = malloc(sizeof(float) * 2 * 3 *model_info.faces);
-    if (!model->tex_coords)
+    model->texCoords = malloc(sizeof(float) * 2 * 3 *model_info.faces);
+    if (!model->texCoords)
         return false;
 
     model->vertices = malloc(sizeof(float) * 3 * 3 * model_info.faces);
@@ -157,8 +157,8 @@ bool load_obj(const char* filepath, model_data* model)
         model->vertices[vertices_index + 1] = unsorted_vertices[(faces[i] - 1)*3 + 1];
         model->vertices[vertices_index + 2] = unsorted_vertices[(faces[i] - 1)*3 + 2];
 
-        model->tex_coords[tex_coord_index] = unsorted_tex_coords[(faces[i + 1] - 1)*2];
-        model->tex_coords[tex_coord_index + 1] = unsorted_tex_coords[(faces[i + 1] - 1)*2 + 1];
+        model->texCoords[tex_coord_index] = unsorted_tex_coords[(faces[i + 1] - 1)*2];
+        model->texCoords[tex_coord_index + 1] = unsorted_tex_coords[(faces[i + 1] - 1)*2 + 1];
 
         model->normals[normal_index] = unsorted_normals[(faces[i + 2] - 1)*3];
         model->normals[normal_index + 1] = unsorted_normals[(faces[i + 2] - 1)*3 + 1];
@@ -169,9 +169,9 @@ bool load_obj(const char* filepath, model_data* model)
         normal_index += 3;
     }
     //sets the model data
-    model->normal_count = model_info.faces * 3;
-    model->tex_coord_count = model_info.faces * 3;
-    model->vertex_count = model_info.faces * 3;
+    model->normalCount = model_info.faces * 3;
+    model->texCoordCount = model_info.faces * 3;
+    model->vertexCount = model_info.faces * 3;
 
     //cleans up the memory
     free(unsorted_normals);

@@ -1,42 +1,32 @@
 #ifndef ASSETLIB_MODEL_H
 #define ASSETLIB_MODEL_H
 
-/*!
-Struct to store model data.
-author: Jonathan Duncanson
-*/
+//NOTE: @Jon
+//Struct to store model data.
 typedef struct
 {
-    float* vertices;
-    float* tex_coords;
-    float* normals;
-    unsigned int vertex_count;
-    unsigned int tex_coord_count;
-    unsigned int normal_count;
-} model_data;
+    float *vertices;
+    float *texCoords;
+    float *normals;
+    unsigned int vertexCount;
+    unsigned int texCoordCount;
+    unsigned int normalCount;
+} Model;
 
-/*!
-Function that clears a model data structure.
-author: Jonathan Duncanson
-*/
-void clear_model_data(model_data* model_data);
+//NOTE: @Jon
+//Function that clears a model data structure.
+void ClearModel(Model *model);
 
-/*!
-Function that creates a new model data structure from the parameters.
-author: Jonathan Duncanson
-*/
-model_data* create_model_data(float* vertices, float* tex_coords, float* normals, unsigned int vertex_count, unsigned int tex_coord_count, unsigned int normal_count);
+//NOTE: @Jon
+//Function that creates a new model data structure from the parameters.
+Model *CreateModel(float* vertices, float* texCoords, float* normals, unsigned int vertexCount, unsigned int texCoordCount, unsigned int normalCount);
 
-/*!
-Function that creates a new model data structure.
-author: Jonathan Duncanson
-*/
-model_data* create_blank_model_data();
+//NOTE: @Jon
+//Function that creates a new model data structure.
+Model *CreateBlankModel();
 
-/*!
-Function that deletes a model data structure and any related data.
-author: Jonathan Duncanson
-*/
-void delete_model_data(model_data* model_data);
+//NOTE: @Jon
+//Function that deletes a model data structure and any related data.
+void DeleteModel(Model *model_data);
 
 #endif

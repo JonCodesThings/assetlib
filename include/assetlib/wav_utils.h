@@ -5,16 +5,12 @@
 
 #include <include/assetlib/audio.h>
 
-/*!
-Function that determines if a file is a wav. Returns true if it is.
-author: Jonathan Duncanson
-*/
-bool is_wav(const char* filepath);
+//NOTE: @Jon
+//Function that determines if a file is a wav. Returns true if it is.
+bool IsWAV(const char *filepath);
 
-/*!
-Function that loads a wav into an audio_data struct. Returns true if successful.
-author: Jonathan Duncanson
-*/
-bool load_wav(const char* filepath, audio_data* data);
+//NOTE: @Jon
+//Function that loads WAV audio data from a file. Returns true if successful.
+bool LoadWAV(const char *filepath, AudioBuffer *data);
 
 #endif

@@ -3,42 +3,33 @@
 
 #include <stdbool.h>
 
-/*!
-Struct to store audio data.
-author: Jonathan Duncanson
-*/
+
+//NOTE: @Jon
+//Struct to store audio data.
 typedef struct
 {
 	int channels;
-	long sample_rate;
-	long byte_rate;
-	int block_align;
-	int bits_per_sample;
-	unsigned char* data;
-} audio_data;
+	long sampleRate;
+	long byteRate;
+	int blockAlign;
+	int bitsPerSample;
+	unsigned char *data;
+} AudioBuffer;
 
-/*!
-Function that clears an audio data structure.
-author: Jonathan Duncanson
-*/
-void clear_audio_data(audio_data* audio_data);
+//NOTE: @Jon
+//Function that clears an audio data structure.
+void ClearAudioBuffer(AudioBuffer* buffer);
 
-/*!
-Function that creates a new audio data structure from the parameters.
-author: Jonathan Duncanson
-*/
-audio_data* create_audio_data(unsigned int channels, long sample_rate, long byte_rate, int block_align, int bits_per_sample, unsigned char* data);
+//NOTE: @Jon
+//Function that creates a new audio data structure from the parameters.
+AudioBuffer *CreateAudioBuffer(unsigned int channels, long sampleRate, long byteRate, int blockAlign, int bitsPerSample, unsigned char *data);
 
-/*!
-Function that creates a new audio data structure.
-author: Jonathan Duncanson
-*/
-audio_data* create_blank_audio_data();
+//NOTE: @Jon
+//Function that creates a new audio data structure.
+AudioBuffer *CreateBlankAudioBuffer();
 
-/*!
-Function that deletes an audio data structure and any related data.
-author: Jonathan Duncanson
-*/
-void delete_audio_data(audio_data* audio_data);
+//NOTE: @Jon
+//Function that deletes an audio data structure and any related data.
+void DeleteAudioBuffer(AudioBuffer *buffer);
 
 #endif

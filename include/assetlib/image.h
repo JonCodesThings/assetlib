@@ -1,51 +1,40 @@
 #ifndef ASSETLIB_IMAGE_H
 #define ASSETLIB_IMAGE_H
 
-/*!
-Enum that stores the color format of the image.
-author: Jonathan Duncanson
-*/
-enum color_format
+//NOTE: @Jon
+//Enum for image colour format.
+enum COLOUR_FORMAT
 {
+	NONE,
     RGB,
     RGBA,
-    NONE
+    COLOR_FORMAT_COUNT
 };
 
-/*!
-Struct to store image data.
-author: Jonathan Duncanson
-*/
+//NOTE: @Jon
+//Struct to store image data.
 typedef struct
 {
     unsigned int width, height;
-    enum color_format format;
+    enum COLOUR_FORMAT format;
     unsigned char* data;
-} image;
+} Image;
 
-/*!
-Function that clears an image's data.
-author: Jonathan Duncanson
-*/
-void clear_image(image* image);
+//NOTE: @Jon
+//Function that clears an image's data.
+void ClearImage(Image *image);
 
 
-/*!
-Function that creates a new image from the parameters.
-author: Jonathan Duncanson
-*/
-image* create_image(unsigned int width, unsigned int height, enum color_format format, unsigned char* data);
+//NOTE: @Jon
+//Function that creates a new image from the parameters.
+Image *CreateImage(unsigned int width, unsigned int height, enum COLOUR_FORMAT format, unsigned char* data);
 
-/*!
-Function that creates a new blank image.
-author: Jonathan Duncanson
-*/
-image* create_blank_image();
+//NOTE: @Jon
+//Function that creates a new blank image.
+Image *CreateBlankImage();
 
-/*!
-Function that deletes an image and any related data.
-author: Jonathan Duncanson
-*/
-void delete_image(image* image);
+//NOTE: @Jon
+//Function that deletes an image and any related data.
+void DeleteImage(Image *image);
 
 #endif

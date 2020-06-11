@@ -5,16 +5,12 @@
 
 #include <include/assetlib/image.h>
 
-/*!
-Function that determines if a file is a png. Returns true if it is.
-author: Jonathan Duncanson
-*/
-bool is_png(const char* filepath);
+//NOTE: @Jon
+//Function that determines if a file is a PNG. Returns true if it is.
+bool IsPNG(const char *filepath);
 
-/*!
-Function that loads a png into an image struct. Returns true if successful.
-author: Jonathan Duncanson
-*/
-bool load_png(const char* filepath, image* image);
+//NOTE: @Jon
+//Function that loads a PNG image from file. Returns true if successful.
+bool LoadPNG(const char *filepath, Image* image);
 
 #endif
